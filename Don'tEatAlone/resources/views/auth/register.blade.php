@@ -107,8 +107,9 @@ register
                 </div>
                 <div class="form-actions">
          <button id="register-back-btn" type="button" class="btn red btn-outline"><a href="{{url('/')}}">Back</a>  </button>
+           <button type="submit" id="register-submit-btn" class="btn green pull-right"> Sign Up </button>
 
-                    {!! Form::submit('Register',['class'=>'btn green pull-right']) !!}
+               {{--}}     {!! Form::submit('Register',['class'=>'btn green pull-right']) !!}  --}}
                 </div>
                 @foreach($errors->all() as $error)
                     $error
@@ -119,6 +120,10 @@ register
 
 
 @section('footer')
+<script>
+
+
+</script>
 
 
 @endsection

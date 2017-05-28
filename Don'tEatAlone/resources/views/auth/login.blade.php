@@ -77,7 +77,7 @@ login
 
         <div class="create-account">
                                  <p> Don't have an account yet ?&nbsp;
-                                     <a href="{{url('/register')}}" onclick="getLocation()" id="register-btn"> Create new account </a>
+                                     <a   href="{{url('/register')}}" id="register-btn"> Create new account </a>
                                  </p>
                        </div>
 
@@ -88,25 +88,7 @@ login
 
 @section('footer')
 
-<script>
-var x = document.getElementById("lat");
-var y = document.getElementById("long");
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(showPosition);
-    } else {
-        x.innerHTML = "";
-        y.innerHTML = "";
-          }
-    }
-
-function showPosition(position) {
-    x.innerHTML="Latitude: " + position.coords.latitude  ;
-
-    y.innerHTML= "Longitude: " + position.coords.longitude ;
-}
-</script>
 
 
 @endsection

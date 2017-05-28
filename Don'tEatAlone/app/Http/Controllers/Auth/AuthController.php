@@ -45,7 +45,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'UserName' => 'required|max:70',
+            'UserName' => 'required|max:70|min:3',
             'email' => 'required|email|min:10|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
 
@@ -55,13 +55,6 @@ class AuthController extends Controller
 
     protected function create(array $data)
     {
-      //  $json = file_get_contents('https://geoip-db.com/json');
-       // $loc = json_decode($json);
-
-       // $city= $loc->city;
-
-      //  $lat=$loc->latitude ;
-       // $long=$loc->longitude ;
 
      return  User::create([
             'UserName' => $data['UserName'],
@@ -69,9 +62,7 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
            // 'Gender' => $data['Gender'],
            // 'UserBirthDate' => $data['UserBirthDate'],
-          //  'UserCity'=>$city,
-          //  'UserLatitude'=>$lat,
-          //  'UserLongitude'=>$long
+
              ]);
 
 

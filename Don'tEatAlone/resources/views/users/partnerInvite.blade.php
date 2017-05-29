@@ -64,6 +64,7 @@ find partner
                                 </div>
                             </div>
                         </div>
+
                         <div id="form_modal2" class="modal fade in" role="dialog" aria-hidden="true" >
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -76,7 +77,7 @@ find partner
                                         <div class="form-group">
                                             <label class="control-label col-md-4">Invitation Date</label>
                                             <div class="col-md-8">
-                                                {!! Form::text('InvitationDate',null,['data-date-format'=>'dd-mm-yyyy','data-date-start-date'=>'-1d','class'=>'form-control input-group input-medium date date-picker ' ,'placeholder'=>'select a date ']) !!}
+                                                {!! Form::text('InvitationDate',null,['data-date-format'=>'yyyy-mm-dd','data-date-start-date'=>'-0d','class'=>'form-control input-group input-medium date date-picker ' ,'placeholder'=>'select a date ']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -99,7 +100,7 @@ find partner
                                             <div class="col-md-8">
                                             <div class="input-group">
                                             {!! Form::textArea('message',old('message'),['class'=>'form-control','placeholder'=>'Enter your Message here.......... ','autocomplete'=>'off']) !!}
-                                            
+
                                               </div>
                                               </div>
                                             </div> -->

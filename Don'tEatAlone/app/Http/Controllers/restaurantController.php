@@ -63,17 +63,23 @@ class restaurantController extends Controller
 
 
 
-    public function upload(Request $request,$id)
+    public function upload(Request $request,$id,User $user)
     {
         $restaurant =Restaurant::find($id);
 
         //dd($restaurant);
         $pic=$restaurant->RestaurantPhoto;
-        if ($request->hasFile('RestaurantPhoto')) {
+
+
+        if ($request->hasFile('RestaurantPhoto') ) {
 
             $picName =uploadImage($request->file('RestaurantPhoto'), base_path().'/public/uploads/'.$pic);
+
             $restaurant->RestaurantPhoto = $picName;
+
+
             $restaurant->save();
+
 
 
             return back();

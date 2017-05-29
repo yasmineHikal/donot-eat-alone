@@ -106,7 +106,10 @@ register
                     <!--<div id="register_tnc_error"></div>-->
                 </div>
                 <div class="form-actions">
-         <button id="register-back-btn" type="button" class="btn red btn-outline"><a href="{{url('/')}}">Back</a>  </button>
+      {{--}}   <button id="register-back-btn" type="button" class="btn red btn-outline"><a href="{{url('/')}}">Back</a>  </button>  --}}
+            <a id="register-back-btn" class="btn red btn-outline" href="{{url('/')}}"> Back
+                                             </a>
+
            <button type="submit" id="register-submit-btn" class="btn green pull-right"> Sign Up </button>
 
                {{--}}     {!! Form::submit('Register',['class'=>'btn green pull-right']) !!}  --}}

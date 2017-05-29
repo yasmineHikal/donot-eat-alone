@@ -16,12 +16,13 @@ login
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <div class="input-icon">
                         <i class="fa fa-envelope"></i>
-            {!! Form::email('email',old('email'),['class'=>'form-control placeholder-no-fix','placeholder'=>'Email','autocomplete'=>'off']) !!}
+
+            {!! Form::email('email',null,['class'=>'form-control placeholder-no-fix','placeholder'=>'Email','autocomplete'=>'off']) !!}
 
                         @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
+                                          <span class="help-block">
+                                             <strong>{{ $errors->first('email') }}</strong>
+                                       </span>
                         @endif
 
 
@@ -67,11 +68,7 @@ login
                         <a href="{{ url('/password/reset') }}" id="forget-password"> here </a> to reset your password. </p>
                 </div>
 
-    @if(count($errors) > 0)
-                    @foreach($errors->all() as $error)
-                        {{ $error }}
-                    @endforeach
-                @endif
+
 {!! Form::close() !!}
             <!-- END LOGIN FORM -->
 

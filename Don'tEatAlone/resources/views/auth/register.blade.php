@@ -111,9 +111,7 @@ register
 
                {{--}}     {!! Form::submit('Register',['class'=>'btn green pull-right']) !!}  --}}
                 </div>
-                @foreach($errors->all() as $error)
-                    $error
-                @endforeach
+
              {!! Form::close() !!}
 
 @endsection

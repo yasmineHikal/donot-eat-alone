@@ -11,10 +11,10 @@
 |
 */
 
-
+Route::auth();
 Route::group(['middleware'=>['web']],function(){
-    Route::auth();
 
+  //  Route::auth();
     Route::get('auth/{provider}', 'AuthSocController@redirectToProvider');
     Route::get('auth/{provider}/callback', 'AuthSocController@handleProviderCallback');
     Route::get('/', function () {

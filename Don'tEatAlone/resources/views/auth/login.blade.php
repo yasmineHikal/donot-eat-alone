@@ -17,14 +17,12 @@ login
                     <div class="input-icon">
                         <i class="fa fa-envelope"></i>
 
-            {!! Form::email('email',null,['class'=>'form-control placeholder-no-fix','placeholder'=>'Email','autocomplete'=>'off']) !!}
-
-                        @if ($errors->has('email'))
-                                          <span class="help-block">
-                                             <strong>{{ $errors->first('email') }}</strong>
-                                       </span>
+            {!! Form::email('email',old('email'),['class'=>'form-control placeholder-no-fix','placeholder'=>'Email','autocomplete'=>'off']) !!}
+   @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
                         @endif
-
 
                     </div>
                 </div>

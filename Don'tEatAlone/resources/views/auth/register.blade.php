@@ -44,7 +44,7 @@ register
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <div class="input-icon">
                         <i class="fa fa-lock"></i>
-                        {!! Form::password('password',['class'=>'form-control placeholder-no-fix','placeholder'=>'Password','autocomplete'=>'off']) !!}
+                        {!! Form::password('password',['class'=>'form-control placeholder-no-fix', 'id'=>'password' ,'placeholder'=>'Password','autocomplete'=>'off']) !!}
                         @if ($errors->has('password'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('password') }}</strong>
@@ -53,18 +53,18 @@ register
 
                     </div>
                 </div>
-                <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <div class="controls">
                         <div class="input-icon">
                             <i class="fa fa-check"></i>
 
 
  {!! Form::password('password_confirmation',['class'=>'form-control placeholder-no-fix','placeholder'=>'Re-type Your Password','autocomplete'=>'off']) !!}
-                            @if ($errors->has('password_confirmation'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password_confirmation') }}</strong>
-                            </span>
-                        @endif
+                            @if ($errors->has('password'))
+                                                        <span class="help-block">
+                                                            <strong style="color:#E73D4A">{{ $errors->first('password') }}</strong>
+                                                        </span>
+                                                    @endif
                         </div>
                     </div>
                 </div>

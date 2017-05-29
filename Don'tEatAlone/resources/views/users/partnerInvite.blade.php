@@ -76,7 +76,7 @@ find partner
                                         <div class="form-group">
                                             <label class="control-label col-md-4">Invitation Date</label>
                                             <div class="col-md-8">
-                                                {!! Form::Date('InvitationDate',old('InvitationDate'),['class'=>'form-control input-medium ' ,'placeholder'=>'select a date ']) !!}
+                                                {!! Form::text('InvitationDate',null,['data-date-format'=>'dd-mm-yyyy','data-date-start-date'=>'-1d','class'=>'form-control input-group input-medium date date-picker ' ,'placeholder'=>'select a date ']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -106,7 +106,7 @@ find partner
                                         <div class="form-group">
                                             <label class="control-label col-md-4">Select Restaurant</label>
                                             <div class="col-md-8">
-                                                {!! Form::select("RestaurantId",restaurant() ,['class' =>'form-control select2 input-large select2-hidden-accessible','tabindex'=>'-1']) !!}
+                                                {!! Form::select("RestaurantId",restaurant() ,['class' =>'select2 input-large select2-hidden-accessible','tabindex'=>'-1']) !!}
                                             </div>
                                         </div>
                                         <input type="hidden" value="{{$partner->id}}" name="InvitationReceiverId"/>

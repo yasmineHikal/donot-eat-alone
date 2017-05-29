@@ -137,7 +137,7 @@ class adminController extends Controller
 
         $this->validate($request,[
             'RestaurantName'   => 'required|min:2|max:50',
-            'RestaurantPhone'  => 'required|min:5|max:12|integer',
+            'RestaurantPhone'  => 'required|min:5|integer',
             'email' => 'required|email|max:255|unique:users',
             'password'  => 'required|min:8|max:50'
 

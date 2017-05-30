@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notification;
 use Illuminate\Http\Request;
 use App\Reservation;
 use Auth;
@@ -23,6 +24,7 @@ class reservationController extends Controller
     public function getReservations(Request $request){
         $reservation=DB::table('reservations')
             ->join('users','ReservationMakerId','=','users.id')
+          //  ->join('users','ReservationMaker2','=','users.id')
             ->join('restaurants','reservations.ReservationRestaurantId','=','restaurants.id')
            // ->where('InvitationReceiverId',Auth::user()->id)
             ->where('ReservationResponse',0)  // the reservation states is still pending not approved or ignored.....
@@ -49,9 +51,25 @@ class reservationController extends Controller
 //        return $reservation;
         $reservation->save();
 
+
+
+
+        ///////   store notification/////////////
+
+        $notification=[
+
+            'NotificationToId1' =>$reservation->ReservationMakerId,
+            'NotificationToId2'   =>$reservation->ReservationMaker2,
+            'ReservationDate' =>$reservation->ReservationDate,
+            'ReservationStartTime' =>$reservation->ReservationStartTime,
+            'ReservationEndTime' =>$reservation->ReservationEndTime,
+            'NotificationFormId' =>$reservation->ReservationRestaurantId
+
+
+        ];
+        Notification::create($notification);
+
         return back();
-
-
     }
 
 

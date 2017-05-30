@@ -84,6 +84,7 @@ public function getInvitations(Request $request){
         $reservation=[
 
             'ReservationMakerId' =>$invitation->InvitationSenderId,
+            'ReservationMaker2'   =>$invitation->InvitationReceiverId,
             'ReservationDate' =>$invitation->InvitationDate,
             'ReservationStartTime' =>$invitation->InvitationStartTime,
             'ReservationEndTime' =>$invitation->InvitationEndTime,

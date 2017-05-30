@@ -61,6 +61,8 @@ find partner
                                     <p class="mt-card-desc font-grey-mint">{{$partner->UserCity}},{{$partner->UserAge}} ,{{$partner->UserJob}} </p>
                                     <a id="invite" class="btn green btn-outline sbold uppercase" href="#form_modal2" data-toggle="modal"> Invite
                                     </a>
+                        <input type="hidden" value="{{$partner->id}}" name="InvitationReceiverId"/>
+
                                 </div>
                             </div>
                         </div>
@@ -89,12 +91,14 @@ find partner
                                                 <div class="input-group">
                                                     <span class="label label-sm label-success"> to </span>
                                                 </div>
+
                                                 <div class="input-group">
                                                     {!! Form::text('InvitationEndTime',old('InvitationEndTime'),['class'=>'form-control timepicker timepicker-no-seconds']) !!}
                                                 </div>
                                                 <!-- /input-group -->
                                             </div>
                                         </div>
+
                                         <!--         <div class="form-group">
                                             <label class="control-label col-md-4">Write message</label>
                                             <div class="col-md-8">
@@ -135,6 +139,34 @@ find partner
 </div>
 @endsection
 @section('footer')
+
+<script>
+    $('.send').on('click', function (event) {
+
+        event.preventDefault();
+
+        var id = $('input[name=InvitationReceiverId]').val();
+        $.ajax({
+            method: 'GET',
+            url: 'invitation',
+            data: {
+                InvitationReceiverId: $('input[name=InvitationReceiverId]').val(),
+                InvitationDate: $('input[name=InvitationDate]').val(),
+                InvitationStartTime: $('input[name=InvitationStartTime]').val(),
+                InvitationEndTime: $('input[name=InvitationEndTime]').val(),
+                RestaurantId: $('input[name=RestaurantId]').val()
+            }
+
+
+        });
+
+    });
+
+
+
+
+</script>
+
 {!! Html::script('assets/global/plugins/select2/js/select2.full.min.js') !!}
 {!! Html::script('assets/pages/scripts/components-select2.min.js') !!}
 {!! Html::script('assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js') !!}

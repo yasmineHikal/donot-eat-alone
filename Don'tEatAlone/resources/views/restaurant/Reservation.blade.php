@@ -67,7 +67,9 @@ reservations
         $.ajax({
               method: 'GET',
               url: '/reject',
-              data:{ReservationId:$('input[name=id]').val()  ,'_token': $('input[name=_token]').val() },
+              data:{ReservationId:$('input[name=id]').val()
+
+              },
                 success:function(data){
 
                      $( ".row-"+id ).remove();
@@ -85,7 +87,8 @@ reservations
             $.ajax({
                   method: 'GET',
                   url: '/approve',
-                  data:{ReservationId:$('input[name=id]').val()  ,'_token': $('input[name=_token]').val() },
+                  data:{ReservationId:$('input[name=id]').val()
+                   },
                   success:function(data){
 
                         $( ".row-"+id ).remove();

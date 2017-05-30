@@ -13,7 +13,7 @@ class Notification extends Model
 
     protected $fillable= [
 
-        'IsRead', 'Content', 'Data', 'Time', 'NotificationToId', 'NotificationFormId'
+        'IsRead',  'ReservationData', 'ReservationStartTime','ReservationEndTime', 'NotificationToId1','NotificationToId2', 'NotificationFormId'
 
     ];
 

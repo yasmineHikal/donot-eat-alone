@@ -14,7 +14,7 @@ class Reservation extends Model
     protected $primaryKey = 'ReservationId';
     protected $fillable= [
 
-        'ReservationData', 'ReservationStartTime','ReservationEndTime', 'ReservationMakerId', 'ReservationResponse','ReservationRestaurantId'
+        'ReservationData', 'ReservationStartTime','ReservationEndTime','ReservationMaker2', 'ReservationMakerId', 'ReservationResponse','ReservationRestaurantId'
 
     ];
 

@@ -141,7 +141,11 @@ class userController extends Controller
 
     public function upload(Request $request, $id)
     {
-
+          $this->validate($request,
+              [
+                'UserPhoto'=>'required|mimes:jpeg,bmp,png,jpg'
+              ]
+              )   ;
 
         $user = name::find($id);
         $pic = Auth::user()->UserPhoto;

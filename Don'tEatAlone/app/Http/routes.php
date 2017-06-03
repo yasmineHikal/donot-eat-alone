@@ -12,6 +12,7 @@
 */
 
 Route::auth();
+
 Route::group(['middleware'=>['web']],function(){
 
   //  Route::auth();
@@ -116,6 +117,10 @@ Route::group(['middleware'=>['web','user']],function(){
 
     Route::get('/approveInvitation','invitationController@approveInvitation');
     Route::get('/rejectInvitation','invitationController@rejectInvitation');
+
+    ////////............User Notifications ................................//////////
+    Route::get('/notifications','notificationController@getNotification');
+
 
     ////////............User messages ................................//////////
 

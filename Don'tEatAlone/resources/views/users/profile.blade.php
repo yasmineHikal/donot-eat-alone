@@ -94,17 +94,22 @@ Profile
                                     </p>
                                     {!! Form::open( ['url'=>'upload/'.Auth::user()->id,'method'=>'post','id'=>'form_sample_2', 'novalidate'=>'novalidate','enctype'=>'multipart/form-data','files' => true]) !!}
                                     {!! csrf_field() !!}
-                                    <div class="form-group">
-                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                            <div>
-                                                <span class="btn default btn-file">
-                                                <span class="fileinput-new"> </span>
-                                                <span class="fileinput-exists">  </span>
-                                                {!! Form::file('UserPhoto') !!}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="form-group {{ $errors->has('UserPhoto') ? ' has-error' : '' }}">
+                                                                          <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                              <div>
+                                                                                  <span class="btn default btn-file">
+                                                                                  <span class="fileinput-new"> </span>
+                                                                                  <span class="fileinput-exists">  </span>
+                                                                                  {!! Form::file('UserPhoto') !!}
+                                                                                  @if ($errors->has('UserPhoto'))
+                                                                                  <span class="help-block">
+                                                                                  <strong>{{ $errors->first('UserPhoto') }}</strong>
+                                                                                  </span>
+                                                                                  @endif
+                                                                                  </span>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
                                      <div class="margin-top-10">
                                         {!! Form::submit('Save',['class'=>'btn green ']) !!}
                                     </div>

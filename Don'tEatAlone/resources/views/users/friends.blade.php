@@ -32,7 +32,7 @@ Friends
                                                     <div class="mt-card-content">
                                                         <a href="{{url('/profile/'. $user->id )}}"><h3 class="mt-card-name"></h3>{{$user->UserName}}</a>
                                                         <p class="mt-card-desc font-grey-mint">{{$user->UserAge}} years old , {{$user->UserCity}} ,{{$user->UserJob}}.</p>
-                                                    <button type="button" class="btn btn-circle green btn-sm">  Message</button>
+                                                {{--}}    <button type="button" class="btn btn-circle green btn-sm">  Message</button>        --}}
 
 
                                                 </div>

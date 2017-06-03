@@ -60,7 +60,7 @@ class adminController extends Controller
     public function storeAdmin(Request $request,User $user)
     {
         $this->validate($request,[
-            'UserName' => 'required|min:3|max:50',
+            'UserName' => 'required|alpha|min:3|max:50',
             'email' => 'required|email|max:255|unique:users',
             'password'  => 'required|min:8|max:50'
 
@@ -91,7 +91,7 @@ class adminController extends Controller
     public function updateAdmin(Request $request, $id)
     {
         $this->validate($request,[
-          'UserName' => 'required|min:3|max:50',
+          'UserName' => 'required|alpha|min:3|max:50',
             'email' => 'required|email|max:255|unique:users',
             'password'  => 'required|min:8|max:50'
             ]);
@@ -136,7 +136,7 @@ class adminController extends Controller
     {
 
         $this->validate($request,[
-            'RestaurantName'   => 'required|min:2|max:50',
+            'RestaurantName'   => 'required|alpha|min:2|max:50',
             'RestaurantPhone'  => 'required|min:5|integer',
             'email' => 'required|email|max:255|unique:users',
             'password'  => 'required|min:8|max:50'
@@ -155,6 +155,8 @@ class adminController extends Controller
            ///add to the restaurant /////////
         $restaurant->RestaurantName   = $request['RestaurantName'];
         $restaurant->RestaurantPhone  = $request['RestaurantPhone'];
+        $restaurant->email  = $request['email'];
+
         $restaurant->AddBy            = Auth::user()->id;
         $restaurant->RestaurantManager=$user->id;
         $restaurant->save();
@@ -241,6 +243,12 @@ class adminController extends Controller
     }
     public function upload(Request $request,$id)
     {
+
+        $this->validate($request,
+            [
+                'UserPhoto'=>'required|mimes:jpeg,bmp,png,jpg'
+            ]
+        )   ;
         $user = User::find($id);
         $pic=Auth::user()->UserPhoto;
         if ($request->hasFile('UserPhoto')) {

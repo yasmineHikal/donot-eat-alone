@@ -63,7 +63,8 @@ class reservationController extends Controller
             'ReservationDate' =>$reservation->ReservationDate,
             'ReservationStartTime' =>$reservation->ReservationStartTime,
             'ReservationEndTime' =>$reservation->ReservationEndTime,
-            'NotificationFormId' =>$reservation->ReservationRestaurantId
+            'NotificationFormId' =>$reservation->ReservationRestaurantId,
+            'type'=>'Rapprove'
 
 
         ];

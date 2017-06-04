@@ -19,6 +19,9 @@ notifications
                     <div class="row row-{{$notification->id}}">
                         <div class="mt-actions">
                             <div class="mt-action">
+                             <div class="mt-action-img">
+                                           <img class="img-responsive" src="../uploads/{{$notification->RestaurantPhoto}}">
+                                                  </div>
 
                                 <div class="mt-action-body">
                                     <div class="mt-action-row">
@@ -35,8 +38,13 @@ notifications
                                         </div>
                                         <div class="mt-action-buttons ">
                                             <div class="btn-group btn-group-circle">
+
                                                 <input type="hidden" value="{{$notification->id}}" name="id">
-                                                <button type="button" id="cancel" class="btn btn-outline green btn-sm approve ">Cancel</button>
+                                               @if($notification->NotificationToId2 == Auth::user()->id)
+                                                <button type="hidden" id="cancel" class="btn btn-outline green btn-sm cancel ">Cancel</button>
+                                                @elseif
+                                             <button type="button" id="cancel" class="btn btn-outline green btn-sm cancel ">Cancel</button>
+                                                     @endif
                                             </div>
                                         </div>
                                     </div>
@@ -68,7 +76,7 @@ notifications
             method: 'GET',
             url: '/cancelNotification',
             data: {
-                InvitationId: $('input[name=id]').val()
+                notificationId: $('input[name=id]').val()
             },
             success: function (data) {
 

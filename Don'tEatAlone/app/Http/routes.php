@@ -120,7 +120,7 @@ Route::group(['middleware'=>['web','user']],function(){
 
     ////////............User Notifications ................................//////////
     Route::get('/notifications','notificationController@getNotification');
-
+    Route::get('/cancelNotification','notificationController@cancelNotification');
 
     ////////............User messages ................................//////////
 

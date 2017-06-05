@@ -45,13 +45,14 @@ notifications
                                             <span class="mt-action-dot bg-green"></span>
                                             <span class="mt=action-time">{{$notification->ReservationStartTime}}-{{$notification->ReservationEndTime}}</span>
                                         </div>
+
                                         <div class="mt-action-buttons ">
                                             <div class="btn-group btn-group-circle">
 
-                                                <input type="hidden" value="{{$notification->id}}" name="id">
+                                                <input type="hidden" value="{{$notification->id }}" name="id">
 
 
-                                          @if($notification->type=='Rapprove)
+                                          @if($notification->type=='Rapprove')
 
 
                                              <input type="button" id="cancel" class="btn btn-outline green btn-sm cancel " value="cancel">

@@ -97,6 +97,20 @@ public function getInvitations(Request $request){
         Reservation::create($reservation);
 
 
+        $notification=[
+
+            'NotificationToId1' =>$invitation->InvitationSenderId,
+            'NotificationToId2'   =>$invitation->InvitationReceiverId,
+
+            'NotificationFormId' =>$invitation->RestaurantId,
+            'type'=>'Uapprove'
+
+
+
+        ];
+        Notification::create($notification);
+
+
 
     }
 

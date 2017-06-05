@@ -6,6 +6,7 @@ use App\Reservation;
 use Illuminate\Http\Request;
 use Auth;
 use App\invitation;
+use App\notification;
 use App\User;
 use App\Restaurant;
 use App\Friend;
@@ -87,8 +88,6 @@ public function getInvitations(Request $request){
             'ReservationMaker2'   =>$invitation->InvitationReceiverId,
             'ReservationDate' =>$invitation->InvitationDate,
             'ReservationStartTime' =>$invitation->InvitationStartTime,
-            'ReservationEndTime' =>$invitation->InvitationEndTime,
-
             'ReservationEndTime' =>$invitation->InvitationEndTime,
             'ReservationRestaurantId' =>$invitation->RestaurantId,
             'ReservationResponse' =>0

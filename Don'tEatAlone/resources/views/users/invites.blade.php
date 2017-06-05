@@ -64,8 +64,10 @@ Invites
     $('.approve').on('click', function (event) {
 
         event.preventDefault();
-
+        alert('hi');
         var id = $('input[name=id]').val();
+
+          // alert($('input[name=id]').val());
         $.ajax({
             method: 'GET',
             url: '/approveInvitation',

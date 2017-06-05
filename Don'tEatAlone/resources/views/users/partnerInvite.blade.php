@@ -54,14 +54,17 @@ find partner
                                 <div class="mt-card-avatar mt-overlay-1">
                                     <img  class="img-responsive" src="../uploads/{{$partner->UserPhoto}}" style="height: 154px">
                                 </div>
+          <input type="hidden" value="{{$partner->id}}" name="InvitationReceiverId" />
+
                                 <div class="mt-card-content">
                                     <a href="{{url('/profile/'. $partner->id )}}">
                                         <h3 class="mt-card-name">{{$partner->UserName}}</h3>
                                     </a>
                                     <p class="mt-card-desc font-grey-mint">{{$partner->UserCity}},{{$partner->UserAge}} ,{{$partner->UserJob}} </p>
-                                    <a id="invite" class="btn green btn-outline sbold uppercase" href="#form_modal2" data-toggle="modal"> Invite
+                                    <a  data-id="{{$partner->id}}" class="btn green btn-outline sbold uppercase invite" href="#form_modal2" data-toggle="modal"> Invite
                                     </a>
-                        <input type="hidden" value="{{$partner->id}}" name="InvitationReceiverId"/>
+
+
 
                                 </div>
                             </div>
@@ -114,7 +117,7 @@ find partner
                                                 {!! Form::select("RestaurantId",restaurant() ,['class' =>'select2 input-large select2-hidden-accessible','tabindex'=>'-1']) !!}
                                             </div>
                                         </div>
-                                        <input type="hidden" value="{{$partner->id}}" name="InvitationReceiverId"/>
+                                        <input type="hidden" value="" name="InvitationReceiverId" id="InvitationReceiverId"/>
                                         <button class="btn dark btn-outline" data-dismiss="modal" aria-hidden="true">Close</button>
                                         {!! Form::submit("send Invitation" ,['class'=>'btn green' ] ) !!}
                                         {!! Form::close() !!}
@@ -141,24 +144,15 @@ find partner
 @section('footer')
 
 <script>
-    $('.send').on('click', function (event) {
+    $('.invite').on('click', function (event) {
 
         event.preventDefault();
-
-        var id = $('input[name=InvitationReceiverId]').val();
-        $.ajax({
-            method: 'GET',
-            url: 'invitation',
-            data: {
-                InvitationReceiverId: $('input[name=InvitationReceiverId]').val(),
-                InvitationDate: $('input[name=InvitationDate]').val(),
-                InvitationStartTime: $('input[name=InvitationStartTime]').val(),
-                InvitationEndTime: $('input[name=InvitationEndTime]').val(),
-                RestaurantId: $('input[name=RestaurantId]').val()
-            }
+        //  alert('hi');
+        var id = $(this).data('id');
 
 
-        });
+        $('#InvitationReceiverId').val($(this).data('id'));
+
 
     });
 

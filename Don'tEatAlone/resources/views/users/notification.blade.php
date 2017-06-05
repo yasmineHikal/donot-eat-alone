@@ -28,7 +28,16 @@ notifications
                                         <div class="mt-action-info ">
                                             <div class="mt-action-details ">
 
-                                                <p class="mt-action-desc"> {{$notification->RestaurantName}} Accepted your reservation with {{$notification->UserName}} </p>
+                                                <p class="mt-action-desc"> the Reservation in {{$notification->RestaurantName}} with {{$notification->UserName}}
+                                                 @if($notification->type=='cancel')
+                                                     is cancelled
+                                                     @elseif($notification->type=='Rapprove')
+                                                     is approved from restaurant
+                                                     @else
+                                                     is approved from partener
+                                                      @endif
+
+                                                 </p>
                                             </div>
                                         </div>
                                         <div class="mt-action-datetime ">
@@ -40,11 +49,17 @@ notifications
                                             <div class="btn-group btn-group-circle">
 
                                                 <input type="hidden" value="{{$notification->id}}" name="id">
-                                               @if($notification->NotificationToId2 == Auth::user()->id)
-                                                <button type="hidden" id="cancel" class="btn btn-outline green btn-sm cancel ">Cancel</button>
-                                                @elseif
-                                             <button type="button" id="cancel" class="btn btn-outline green btn-sm cancel ">Cancel</button>
-                                                     @endif
+
+
+                                          @if($notification->type=='Rapprove)
+
+
+                                             <input type="button" id="cancel" class="btn btn-outline green btn-sm cancel " value="cancel">
+                                                @else
+
+                                             <input type="hidden" id="cancel" class="btn btn-outline green btn-sm cancel " value="cancel">
+                                                 @endif
+
                                             </div>
                                         </div>
                                     </div>

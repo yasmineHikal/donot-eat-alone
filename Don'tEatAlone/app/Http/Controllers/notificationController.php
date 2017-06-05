@@ -25,7 +25,7 @@ class notificationController extends Controller
           //  ->join('users','NotificationToId2','=','users.id')
             ->select('notifications.*','restaurants.RestaurantName','restaurants.RestaurantPhoto','users.UserName')
             ->where('NotificationToId1',Auth::user()->id)
-         //   ->where('type','Rapprove')
+          // ->where('type','Rapprove')
 
             ->get();
 

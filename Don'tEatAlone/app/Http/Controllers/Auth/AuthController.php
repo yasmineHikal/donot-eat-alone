@@ -48,8 +48,9 @@ class AuthController extends Controller
             'UserName' => 'required|max:70|min:3|string|alpha',
             'email' => 'required|email|min:10|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-
-
+            'Gender' => 'required',
+            'UserCity' => 'required',
+            'UserBirthDate' => 'required',
 
         ]);
     }
@@ -70,6 +71,8 @@ class AuthController extends Controller
             'UserLongitude'=>$data['long'],
             'UserLatitude'=>$data['lat'],
             'Gender' => $data['Gender'],
+            'UserCity' => $data['UserCity'],
+
             'UserBirthDate' => $data['UserBirthDate'],
              'UserAge'=>$age
 

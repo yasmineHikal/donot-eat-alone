@@ -1,8 +1,25 @@
 <?php
 function UserCity(){
     $array=[
-       'nasr city'=>'nasr city',
-       'madii'=>'madii'
+        'Naser City'=>'Naser City',
+        'New Cairo'=>'New Cairo' ,
+        'Sheraton'=>'Sheraton',
+        'El tagamo3'=>'El tagamo3',
+        'Down Town'=>'Down Town',
+        'El-Manyal'=>'El-Manyal',
+        'Garedn city'=>'Garedn city',
+        'Abbasya'=>'Abbasya',
+        'Mohandissen'=>'Mohandissen',
+        'Dokky'=>'Dokky',
+        '6th of october'=>'6th of october',
+        'El-Kattamya'=>'El-Kattamya',
+        'Maadi'=>'Maadi',
+        'El-Mokattam'=>'El-Mokattam',
+        'Rehab'=>'Rehab',
+        'Madinaty'=>'Madinaty',
+        'El-Threr'=>'El-Threr',
+        'El-shikh zayed'=>'El-shikh zayed'
+
 
     ];
 

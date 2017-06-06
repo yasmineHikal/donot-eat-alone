@@ -50,12 +50,17 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
 
 
+
         ]);
     }
 
 
     protected function create(array $data)
     {
+        $dateOfBirth =$data['UserBirthDate'];
+        $today = date("y-m-d");
+        $diff = date_diff(date_create($dateOfBirth), date_create($today));
+        $age=$diff->format('%y');
 
      return  User::create([
 
@@ -64,10 +69,9 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'UserLongitude'=>$data['long'],
             'UserLatitude'=>$data['lat'],
-
-
-           // 'Gender' => $data['Gender'],
-           // 'UserBirthDate' => $data['UserBirthDate'],
+            'Gender' => $data['Gender'],
+            'UserBirthDate' => $data['UserBirthDate'],
+             'UserAge'=>$age
 
              ]);
 

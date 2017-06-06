@@ -73,8 +73,12 @@ register
 
                 <div class="form-group{{ $errors->has('Gender') ? ' has-error' : '' }}">
                                                     <div class="input-icon">
-
-               {!! Form::select("Gender",Gender(),['class' =>'form-control placeholder-no-fix','placeholder'=>'gender']) !!}
+                                                    <i class="fa fa-venus-mars"></i>
+                                   <select name="Gender" id="" class="select form-control" placeholder="Gender">
+                                                           <option value="">Gender</option>
+                                                           <option value="Male">Male</option>
+                                                           <option value="Female">Female</option>
+                                                       </select>
                                                         @if ($errors->has('Gender'))
                                                             <span class="help-block">
                                                                 <strong>{{ $errors->first('Gender') }}</strong>
@@ -94,6 +98,45 @@ register
                                                                         @endif
                                                                     </div>
                                                                 </div>
+
+
+                                                  <div class="form-group{{ $errors->has('UserCity') ? ' has-error' : '' }}">
+                                                                         <div class="input-icon">
+                                                                                    <i class="fa fa-map-marker"></i>
+                                    <select name="UserCity" id="" class="select form-control" placeholder="UserCity">
+                                                          <option value="">City</option>
+                                                           <option value="Naser City">Naser City</option>
+                                                           <option value="New Cairo">New Cairo</option>
+                                                           <option value="Sheraton">Sheraton</option>
+                                                           <option value="El tagamo3">El tagamo3</option>
+                                                           <option value="Down Town">Down Town</option>
+                                                           <option value="El-Manyal">El-Manyal</option>
+                                                           <option value="Garedn city">Garedn city</option>
+                                                           <option value="Abbasya">Abbasya</option>
+                                                           <option value="Mohandissen">Mohandissen</option>
+                                                           <option value="Dokky">Dokky</option>
+                                                           <option value="6th of october">6th of october</option>
+                                                           <option value="El-Kattamya">El-Kattamya</option>
+                                                           <option value="Maadi">Maadi</option>
+                                                           <option value="El-Mokattam">El-Mokattam</option>
+                                                           <option value="Rehab">Rehab</option>
+                                                           <option value="Madinaty">Madinaty</option>
+                                                           <option value="El-Threr">El-Threr</option>
+                                                           <option value="El-shikh zayed">El-shikh zayed</option>
+
+
+                                                             </select>
+                                                                        @if ($errors->has('UserCity'))
+                                                                            <span class="help-block">
+                                                                                <strong>{{ $errors->first('UserCity') }}</strong>
+                                                                            </span>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+
+
+
+
 
                                        <input type="hidden" id="lat" value="" name="lat">
                                        <input type="hidden" id="long" value="" name="long">

@@ -70,11 +70,11 @@ register
                 </div>
 
 
-{{--
+
                 <div class="form-group{{ $errors->has('Gender') ? ' has-error' : '' }}">
                                                     <div class="input-icon">
 
-               {!! Form::select("Gender",Gender(),['class' =>'form-control select2 input-large select2-hidden-accessible','placeholder'=>'gender']) !!}
+               {!! Form::select("Gender",Gender(),['class' =>'form-control placeholder-no-fix','placeholder'=>'gender']) !!}
                                                         @if ($errors->has('Gender'))
                                                             <span class="help-block">
                                                                 <strong>{{ $errors->first('Gender') }}</strong>
@@ -86,7 +86,7 @@ register
                 <div class="form-group{{ $errors->has('UserBirthDate') ? ' has-error' : '' }}">
                                                                     <div class="input-icon">
                                                                         <i class="fa fa-font"></i>
-                                 {!! Form::date('UserBirthDate',old('UserBirthDate'),['class'=>'form-control placeholder-no-fix']) !!}
+               {!! Form::date('UserBirthDate',old('UserBirthDate'),['class'=>'form-control placeholder-no-fix']) !!}
                                                                         @if ($errors->has('UserBirthDate'))
                                                                             <span class="help-block">
                                                                                 <strong>{{ $errors->first('UserBirthDate') }}</strong>
@@ -94,7 +94,13 @@ register
                                                                         @endif
                                                                     </div>
                                                                 </div>
-                                             --}}
+
+                                       <input type="hidden" id="lat" value="" name="lat">
+                                       <input type="hidden" id="long" value="" name="long">
+
+
+
+
                 <div class="form-group">
                     <label class="mt-checkbox mt-checkbox-outline">
                         <input type="checkbox" name="remember" value="1" />
@@ -123,6 +129,33 @@ register
 @section('footer')
 <script>
 
+function geoFindMe() {
+
+
+
+  if (!navigator.geolocation){
+   $('#lat').val('');
+   $('#long').val('');
+    return;
+  }
+
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+          $('#lat').val(latitude);
+          $('#long').val(longitude);
+
+  }
+
+  function error() {
+   $('#lat').val('');
+   $('#long').val('');
+  }
+
+
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+  window.onload=geoFindMe();
 
 </script>
 

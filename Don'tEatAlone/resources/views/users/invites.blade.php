@@ -37,8 +37,8 @@ Invites
                                         <div class="mt-action-buttons ">
                                             <div class="btn-group btn-group-circle">
                                                 <input type="hidden" value="{{$invite->InvitationId}}" name="id">
-                                                <button type="button" id="approve" class="btn btn-outline green btn-sm approve ">Approve</button>
-                                                <button type="button" id="reject" class="btn btn-outline red btn-sm reject">Reject</button>
+                                                <a type="button" data-id="{{$invite->InvitationId}}" class="btn btn-outline green btn-sm approve ">Approve</a>
+                                                <a type="button" data-id="{{$invite->InvitationId}}" class="btn btn-outline red btn-sm reject">Reject</a>
                                             </div>
                                         </div>
                                     </div>
@@ -64,15 +64,15 @@ Invites
     $('.approve').on('click', function (event) {
 
         event.preventDefault();
-        alert('hi');
-        var id = $('input[name=id]').val();
 
-          // alert($('input[name=id]').val());
-        $.ajax({
+        var id = $(this).data('id');
+
+         // alert( $(this).data('id'));
+   $.ajax({
             method: 'GET',
             url: '/approveInvitation',
             data: {
-                InvitationId: $('input[name=id]').val()
+                InvitationId:$(this).data('id')
             },
             success: function (data) {
 
@@ -87,12 +87,12 @@ Invites
 $('.reject').on('click', function (event) {
     event.preventDefault();
 
-    var id = $('input[name=id]').val();
+    var id =$(this).data('id');
     $.ajax({
         method: 'GET',
         url: '/rejectInvitation',
         data: {
-            InvitationId: $('input[name=id]').val()
+            InvitationId: $(this).data('id')
         },
         success: function (data) {
 

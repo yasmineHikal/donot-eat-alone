@@ -37,8 +37,8 @@ reservations
                                         <div class="mt-action-buttons ">
                                             <div class="btn-group btn-group-circle">
                                                 <input type="hidden" value="{{$reserve->ReservationId}}" name="id">
-                                                <button type="button" id="" class="btn btn-outline green btn-sm approve">Approve</button>
-                                                <button type="button" id="reject" class="btn btn-outline red btn-sm reject">Reject</button>
+                                                <button type="button" data-id="{{ $reserve->ReservationId }}" class="btn btn-outline green btn-sm approve">Approve</button>
+                                                <button type="button" data-id="{{ $reserve->ReservationId }}" class="btn btn-outline red btn-sm reject">Reject</button>
                                             </div>
                                         </div>
                                     </div>
@@ -63,11 +63,11 @@ reservations
 <script>
     $('.reject').on('click',function(event){
     event.preventDefault();
-     var  id =  $('input[name=id]').val();
+     var  id =  $(this).data('id');
         $.ajax({
               method: 'GET',
               url: '/reject',
-              data:{ReservationId:$('input[name=id]').val()
+              data:{ReservationId: $(this).data('id')
 
               },
                 success:function(data){
@@ -83,11 +83,11 @@ reservations
     $('.approve').on('click',function(event){
     
         event.preventDefault();
-            var  id =  $('input[name=id]').val();
+            var  id = $(this).data('id');
             $.ajax({
                   method: 'GET',
                   url: '/approve',
-                  data:{ReservationId:$('input[name=id]').val()
+                  data:{ReservationId: $(this).data('id')
                    },
                   success:function(data){
 

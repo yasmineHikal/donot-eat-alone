@@ -55,7 +55,7 @@ notifications
                                           @if($notification->type=='Rapprove')
 
 
-                                             <input type="button" id="cancel" class="btn btn-outline green btn-sm cancel " value="cancel">
+                                             <input type="button" data-id="{{$notification->id}}" class="btn btn-outline green btn-sm cancel " value="cancel">
                                                 @else
 
                                              <input type="hidden" id="cancel" class="btn btn-outline green btn-sm cancel " value="cancel">
@@ -87,12 +87,12 @@ notifications
 
         event.preventDefault();
 
-        var id = $('input[name=id]').val();
+        var id = $(this).data('id');
         $.ajax({
             method: 'GET',
             url: '/cancelNotification',
             data: {
-                notificationId: $('input[name=id]').val()
+                notificationId: $(this).data('id')
             },
             success: function (data) {
 

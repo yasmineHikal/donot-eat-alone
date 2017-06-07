@@ -47,6 +47,7 @@
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
          {!! Html::style('assets/pages/css/login-4.min.css') !!}
+         {!! Html::style('cus/sweetalert.css') !!}
 
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
@@ -120,6 +121,7 @@
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
          {!! Html::script('assets/pages/scripts/login-4.min.js') !!}
+          {!! Html::script('cus/sweetalert.min.js') !!}
 
         <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->

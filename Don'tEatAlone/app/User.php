@@ -16,7 +16,7 @@ class User extends Authenticatable
          'UserName', 'email', 'UserCity',
         'UserPhone', 'UserPhoto', 'UserBirthDate', 'password',
         'remember_token', 'UserLongitude', 'UserLatitude',
-        'Gender','UserInterests','UserJob','UserAge','UserAbout','role'
+        'Gender','UserInterests','UserJob','UserAge','UserAbout','role','activated'
     ];
 
     /**

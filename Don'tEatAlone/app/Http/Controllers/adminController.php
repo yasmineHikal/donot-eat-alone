@@ -155,7 +155,6 @@ class adminController extends Controller
            ///add to the restaurant /////////
         $restaurant->RestaurantName   = $request['RestaurantName'];
         $restaurant->RestaurantPhone  = $request['RestaurantPhone'];
-        $restaurant->email  = $request['email'];
 
         $restaurant->AddBy            = Auth::user()->id;
         $restaurant->RestaurantManager=$user->id;

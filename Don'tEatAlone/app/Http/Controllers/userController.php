@@ -127,7 +127,7 @@ class userController extends Controller
         $user->save();
 
         $users = $user->all();
-        return back();
+        return back()->withFlashMessage('Profile updated successfully');;
     }
 
 
@@ -156,7 +156,7 @@ class userController extends Controller
             $user->save();
 
 
-            return back();
+            return back()->withFlashMessage('Photo uploaded successfully');;
         }
 
     }
@@ -176,7 +176,7 @@ class userController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return back();
+        return back()->withFlashMessage('Password updated successfully');;
     }
 
 

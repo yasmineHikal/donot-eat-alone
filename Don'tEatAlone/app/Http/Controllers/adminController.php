@@ -104,7 +104,7 @@ class adminController extends Controller
         $user->save();
 
         $users = $user->all();
-        return view('admin.allAdmins',compact('users'));
+        return view('admin.allAdmins',compact('users'))->withFlashMessage('admin updated successfully');
     }
 
     //Remove the admin specified resource from storage.
@@ -113,7 +113,7 @@ class adminController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return back();
+        return back()->withFlashMessage('user deleted successfully');
     }
 
     // show all restaurants....................................................
@@ -137,7 +137,7 @@ class adminController extends Controller
 
         $this->validate($request,[
             'RestaurantName'   => 'required|alpha|min:2|max:50',
-            'RestaurantPhone'  => 'required|min:5|integer',
+            'RestaurantPhone'  => 'required|min:5|alphanumreric',
             'email' => 'required|email|max:255|unique:users',
             'password'  => 'required|min:8|max:50'
 
@@ -197,7 +197,7 @@ class adminController extends Controller
     {
         $restaurant = Restaurant::find($id);
         $restaurant->delete();
-        return back();
+        return back()->withFlashMessage('Restaurant added successfully');
     }
     public function showAllUsers(User $user)
     {
@@ -213,7 +213,7 @@ class adminController extends Controller
     {
         $restaurant = Restaurant::find($id);
         $restaurant->delete();
-        return back();
+        return back()->withFlashMessage('Restaurant deleted successfully');
     }
 
 
@@ -238,8 +238,9 @@ class adminController extends Controller
         $user->save();
 
         $users = $user->all();
-        return back();
+        return back()->withFlashMessage('Profile edit successfully');
     }
+
     public function upload(Request $request,$id)
     {
 
@@ -257,7 +258,7 @@ class adminController extends Controller
             $user->save();
 
 
-            return back();
+            return back()->withFlashMessage('photo updated successfully');
         }
     }
     public function editPassword(Request $request, $id)
@@ -268,6 +269,6 @@ class adminController extends Controller
         $user->password =bcrypt($request->password);
         $user->save();
 
-        return back();
+        return back()->withFlashMessage('Password updated successfully');
     }
 }

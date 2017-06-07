@@ -41,6 +41,7 @@
                 {!! Html::style('assets/layouts/layout/css/themes/darkblue.min.css') !!}
                 {!! Html::style('assets/layouts/layout/css/custom.min.css') !!}
                 {!! Html::style('cus/sweetalert.css') !!}
+
                 <!-- END THEME LAYOUT STYLES -->
                 @yield('header')
                 <link rel="shortcut icon" href="favicon.ico" />
@@ -371,6 +372,8 @@
                 {!! Html::script('assets/layouts/layout/scripts/demo.min.js') !!}
                 {!! Html::script('assets/layouts/global/scripts/quick-sidebar.min.js') !!}
                  {!! Html::script('cus/sweetalert.min.js') !!}
+
+ @include('/users/layouts/flashMessage')
                 <!-- END THEME LAYOUT SCRIPTS -->
                 @yield('footer')
             </body>

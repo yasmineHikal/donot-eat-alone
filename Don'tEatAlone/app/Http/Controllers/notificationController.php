@@ -61,6 +61,7 @@ class notificationController extends Controller
         Notification::create($notification);
 
          notification::where('id',$id)->delete();
+        return back()->withFlashMessage('Reservation cancelled');
 
 
 

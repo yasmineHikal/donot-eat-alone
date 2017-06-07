@@ -35,7 +35,8 @@ class invitationController extends Controller
         ];
         invitation::create($attributes);
 
-        return back();
+        return back()->withFlashMessage('Invitation sent');
+;
 
     }
 
@@ -109,6 +110,7 @@ public function getInvitations(Request $request){
         ];
         Notification::create($notification);
 
+        return back()->withFlashMessage('Invitation approved');
 
 
     }
@@ -122,7 +124,7 @@ public function getInvitations(Request $request){
 
         $invitation->save();
 
-        return back();
+        return back()->withFlashMessage('Invitation rejected');
 
 
 

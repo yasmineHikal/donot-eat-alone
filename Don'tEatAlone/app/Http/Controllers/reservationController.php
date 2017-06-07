@@ -70,7 +70,8 @@ class reservationController extends Controller
         ];
         Notification::create($notification);
 
-        return back();
+        return back()->withFlashMessage('Reservation approved');
+
     }
 
 
@@ -82,7 +83,8 @@ class reservationController extends Controller
 
         $reservation->save();
 
-        return back();
+        return back()->withFlashMessage('Reservation rejected');
+
 
 
 

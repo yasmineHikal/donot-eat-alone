@@ -36,6 +36,15 @@ class restaurantController extends Controller
 
     public function editProfile(Request $request ,$id)
     {
+        $this->validate($request,[
+            'RestaurantName'   => 'required|alpha|min:2|max:50',
+            'RestaurantPhone'  => 'required|min:5|integer',
+            'RestaurantAddress' => 'required',
+
+
+
+
+        ]);
         $restaurant =Restaurant::find($id);
 
         $restaurant->RestaurantName           = $request['RestaurantName'];
@@ -47,7 +56,8 @@ class restaurantController extends Controller
         $restaurant->save();
 
        // $restaurants = $restaurant->all();
-        return back();
+
+        return back()->withFlashMessage('Profile edited successfully');
     }
 
 
@@ -65,6 +75,11 @@ class restaurantController extends Controller
 
     public function upload(Request $request,$id,User $user)
     {
+        $this->validate($request,
+            [
+                'RestaurantPhoto'=>'required|mimes:jpeg,bmp,png,jpg'
+            ]
+        )   ;
         $restaurant =Restaurant::find($id);
 
         //dd($restaurant);
@@ -82,8 +97,10 @@ class restaurantController extends Controller
 
 
 
-            return back();
+
         }
+        return back()->withFlashMessage('photo uploaded successfully');
+
 
     }
 
@@ -104,6 +121,6 @@ class restaurantController extends Controller
         $restaurant->password =bcrypt($request->password);
         $restaurant->save();
 
-        return back();
+        return back()->withFlashMessage('Password edited successfully');;
     }
 }

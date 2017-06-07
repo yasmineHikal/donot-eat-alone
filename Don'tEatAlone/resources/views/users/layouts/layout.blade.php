@@ -438,6 +438,15 @@
                 {!! Html::script('assets/layouts/layout/scripts/demo.min.js') !!}
                 {!! Html::script('assets/layouts/global/scripts/quick-sidebar.min.js') !!}
                  {!! Html::script('cus/sweetalert.min.js') !!}
+              @if(Session::has('flash_message'))
+
+
+                    <script>
+                    swal({   title: "{{Session::get('flash_message')}} .",   text: " ",   timer: 2000,   showConfirmButton: false });
+                    </script>
+
+
+              @endif
                 @yield('footer')
                 <!-- END THEME LAYOUT SCRIPTS -->
             </body>

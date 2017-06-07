@@ -365,7 +365,7 @@
                 {!! Html::script('assets/layouts/global/scripts/quick-sidebar.min.js') !!}
                 {!! Html::script('assets/layouts/global/scripts/quick-sidebar.min.js') !!}
                 {!! Html::script('cus/sweetalert.min.js') !!}
-
+              @include('/users/layouts/flashMessage')
                 <!-- END THEME LAYOUT SCRIPTS -->
                 @yield('footer')
             </body>

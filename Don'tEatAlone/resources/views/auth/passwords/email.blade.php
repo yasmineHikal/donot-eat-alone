@@ -26,7 +26,7 @@ Reset password
              </div>
         </div>
         <div class="form-actions">
-            <button type="button" id="back-btn" class="btn red btn-outline"><a href="{{url('/')}}">Back </a></button>
+            <a type="button" id="back-btn" class="btn red btn-outline" href="{{url('/')}}">Back </a>
             <button type="submit" class="btn green pull-right"> Submit </button>
         </div>
     {!! Form::close() !!}

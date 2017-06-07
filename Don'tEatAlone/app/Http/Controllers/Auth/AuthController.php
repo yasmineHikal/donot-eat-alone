@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -77,6 +78,27 @@ class AuthController extends Controller
              'UserAge'=>$age
 
              ]);
+        //first create firebase object:
+        $firebaseObject = new \Firebase\FirebaseLib($this->firebaseUrl,$this->firebaseToken);
+
+
+
+        $users   = new \stdClass();
+        $users->id=  Auth::user()->id;
+        $users->lat = $data['lat'];
+        $users ->long= $data['long'];
+        $users ->username=$data['UserName'];
+        $users ->email= $data['email'];
+        $users ->gender= $data['Gender'];
+        $users ->city=$data['UserCity'] ;
+        $users ->birthdate= $data['UserBirthDate'];
+        $users ->age= $age;
+
+
+
+        //$this->currentPath.'/'.$userId ==	https://syam.firebaseio.com/users/data
+        $firebaseObject->set($this->currentPath.'/'.$users->id ,$users);
+
 
 
     }

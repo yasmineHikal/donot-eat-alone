@@ -25,15 +25,17 @@ Home
         <div class="row">
             <div class="col-sm-12">
                 <!--select2-selection__placeholder -->
-                {!! Form::open(['url'=>'findPartner','method'=>'get']) !!}
-                <label>City</label>
-                {!! Form::select("UserCity",UserCity(), null ,['class' =>'form-control select2 input-large select2-hidden-accessible','placeholder'=>'Partner city']) !!}
-                <label>Gender</label>
-                {!! Form::select("Gender",Gender(), null ,['class' =>'form-control select2 input-large select2-hidden-accessible','placeholder'=>'gender']) !!}
-                <label>Age From:</label>
-                {!! Form::select("ageFrom",Age(), null ,['class' =>'form-control select2 input-large select2-hidden-accessible','placeholder'=>'gender']) !!}
-                <label>To:</label>
-                {!! Form::select("ageTo",Age(), null ,['class' =>'form-control select2 input-large select2-hidden-accessible','placeholder'=>'gender']) !!}
+                {!! Form::open(['url'=>'findPartner','method'=>'get', 'class'=>'form-inline margin-bottom-10']) !!}
+                   <label></label>
+                {!! Form::select("UserCity",UserCity(), null ,['class' =>'form-control select input-small ','placeholder'=>'City']) !!}
+                <label></label>
+                {!! Form::select("Gender",Gender(), null ,['class' =>'form-control select input-small','placeholder'=>'Gender']) !!}
+                 <label></label>
+                {!! Form::select("ageFrom",Age(), null ,['class' =>'form-control select input-small','placeholder'=>'Age From']) !!}
+                <label></label>
+                {!! Form::select("ageTo",Age(), null ,['class' =>'form-control select input-small','placeholder'=>'Age To']) !!}
+                 <label></label>
+
                 {!! Form::submit("find Partner" ,['class'=>'btn btn-circle green'] ) !!}
                 {!! Form::close() !!}
             </div>

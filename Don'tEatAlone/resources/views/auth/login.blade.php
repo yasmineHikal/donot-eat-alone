@@ -8,7 +8,18 @@ login
            <!-- BEGIN LOGIN FORM -->
             {!! Form::open(['url'=>'login','class'=>'login-form' ,'method'=>'post']) !!}
                 <h3 class="form-title">Login to your account</h3>
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                @if (session('warning'))
+                    <div class="alert alert-warning">
+                        {{ session('warning') }}
+                    </div>
+                @endif
                 <div class="alert alert-danger display-hide">
+
                     <button class="close" data-close="alert"></button>
                     <span> Enter valid email and password. </span>
                 </div>

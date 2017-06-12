@@ -15,6 +15,9 @@ class Conversation extends Model
         'id','MessageId '//,'SenderId','ReceiverId'
 
     ];
+    public function messages(){
+        return $this->hasMany('App\Messages');
+    }
 
     protected $appends= ['message'/*,'sender','receiver'*/];
 

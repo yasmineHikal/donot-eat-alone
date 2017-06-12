@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Message;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -13,7 +14,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
 
-         'UserName', 'email', 'UserCity',
+        'UserName', 'email', 'UserCity',
         'UserPhone', 'UserPhoto', 'UserBirthDate', 'password',
         'remember_token', 'UserLongitude', 'UserLatitude',
         'Gender','UserInterests','UserJob','UserAge','UserAbout','role','activated'
@@ -27,4 +28,7 @@ class User extends Authenticatable
     protected $hidden = [
         'UserPassword', 'remember_token',
     ];
+    public function messages(){
+        return $this->hasMany('App\Messages');
+    }
 }

@@ -21,108 +21,71 @@ messages
                     </div>
                 </div>
             </div>
+            
             <div class="portlet-body" id="chats">
                 <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 525px;">
                     <div class="scroller" style="height: 525px; overflow: hidden; width: auto;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
+                        @foreach($messages as $message)
                         <ul class="chats">
+                            @foreach($receivers as $receiver)
                             <li class="out">
-                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg">
+                                <img class="avatar" alt="" src="../uploads/{{$receiver->UserPhoto}}">
                                 <div class="message">
                                     <span class="arrow"> </span>
-                                    <a href="javascript:;" class="name"> Lisa Wong </a>
-                                    <span class="datetime"> at 20:11 </span>
-                                    <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                                    <a href="javascript:;" class="name"> {{$receiver->UserName}}</a>
+                                    <span class="datetime">{{$message->created_at}}</span>
+                                    <span class="body"> {{$message->MessageContent}}</span>
                                 </div>
                             </li>
-                            <li class="out">
-                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg">
-                                <div class="message">
-                                    <span class="arrow"> </span>
-                                    <a href="javascript:;" class="name"> Lisa Wong </a>
-                                    <span class="datetime"> at 20:11 </span>
-                                    <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
-                                </div>
-                            </li>
+                            @endforeach
+                            @foreach($senders as $sender)
                             <li class="in">
-                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar1.jpg">
+                                <img class="avatar" alt="" src="../uploads/{{$sender->UserPhoto}}">
                                 <div class="message">
                                     <span class="arrow"> </span>
-                                    <a href="javascript:;" class="name"> Bob Nilson </a>
-                                    <span class="datetime"> at 20:30 </span>
-                                    <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                                    <a href="javascript:;" class="name"> {{$sender->UserName}} </a>
+                                    <span class="datetime"> {{$message->created_at}}</span>
+                                    <span class="body" id="message"></span>
                                 </div>
                             </li>
-                            <li class="in">
-                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar1.jpg">
-                                <div class="message">
-                                    <span class="arrow"> </span>
-                                    <a href="javascript:;" class="name"> Bob Nilson </a>
-                                    <span class="datetime"> at 20:30 </span>
-                                    <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
-                                </div>
-                            </li>
-                            <li class="out">
-                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg">
-                                <div class="message">
-                                    <span class="arrow"> </span>
-                                    <a href="javascript:;" class="name"> Richard Doe </a>
-                                    <span class="datetime"> at 20:33 </span>
-                                    <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
-                                </div>
-                            </li>
-                            <li class="in">
-                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg">
-                                <div class="message">
-                                    <span class="arrow"> </span>
-                                    <a href="javascript:;" class="name"> Richard Doe </a>
-                                    <span class="datetime"> at 20:35 </span>
-                                    <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
-                                </div>
-                            </li>
-                            <li class="out">
-                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar1.jpg">
-                                <div class="message">
-                                    <span class="arrow"> </span>
-                                    <a href="javascript:;" class="name"> Bob Nilson </a>
-                                    <span class="datetime"> at 20:40 </span>
-                                    <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
-                                </div>
-                            </li>
-                            <li class="in">
-                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg">
-                                <div class="message">
-                                    <span class="arrow"> </span>
-                                    <a href="javascript:;" class="name"> Richard Doe </a>
-                                    <span class="datetime"> at 20:40 </span>
-                                    <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
-                                </div>
-                            </li>
-                            <li class="out">
-                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar1.jpg">
-                                <div class="message">
-                                    <span class="arrow"> </span>
-                                    <a href="javascript:;" class="name"> Bob Nilson </a>
-                                    <span class="datetime"> at 20:54 </span>
-                                    <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. sed diam nonummy nibh euismod tincidunt ut laoreet. </span>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
+                        @endforeach
                     </div>
                     <div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 461.683px;"></div>
                     <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div>
                 </div>
-                <div class="chat-form">
-                    <div class="input-cont">
-                        <input class="form-control" type="text" placeholder="Type a message here..."> 
+                {!! Form::open(['url'=>'sendMessage/'.$id,'method'=>'post']) !!}         
+                {!! csrf_field()!!}
+                    <div class="chat-form input-cont">
+                        {!! Form::text('MessageContent',old('MessageContent'),['id'=>'MessageContent','class'=>'form-control','placeholder'=>'Type a message here...','autofocus'=>'', 'onblur'=>'notTyping()']) !!}
                     </div>
                     <div class="btn-cont">
                         <span class="arrow"> </span>
-                        <a href="" class="btn blue icn-only">
-                        <i class="fa fa-check icon-white"></i>
-                        </a>
+                        <button type='submit' class='btn blue icn-only' onclick='submitChat'>
+                            <i class="fa fa-check icon-white"></i>
+                    </button>
                     </div>
-                </div>
+                {!! Form::close()!!}
             </div>
+            <!--<script>
+                function submitChat(){
+                    if(form.MessageContent.value == ''){
+                        return;
+                    }
+                    var form.MessageContent = form.MessageContent.value;
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function(){
+                        if(xmlhttp.readyState==4&&xmlhttp.status==200){
+                            document.getElementById('message').innerHTML = xmlhttp.responseText;
+                        }
+                    }
+                    xmlhttp.open('POST','',true);
+                    xmlhttp.send();
+                }
+
+            </script>-->
+            
         </div>
         <!-- END PORTLET-->
     </div>

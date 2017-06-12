@@ -96,17 +96,18 @@ Route::group(['middleware'=>['web','user']],function(){
     ///////..............USER MESSAGES...................... ////////////
 
     Route::get('messagesNotifications','messageController@getUserNotifications');
-    Route::get('messages','messageController@getMessages');
-    Route::post('message','messageController@getMessageById');
-    Route::post('messageSent','messageController@getMessageSent');
-    Route::post('sendMessage','messageController@sendMessage');
+    //Route::get('messages','messageController@getMessages');
+    Route::get('/messages/{id}','messageController@getMessages');
+    //Route::post('messages','messageController@getMessageById');
+    //Route::post('messageSent','messageController@getMessageSent');
+    Route::post('sendMessage/{id}','messageController@sendMessage');
 
 
     ///////..............USER CONVERSATION...................... ////////////
 
-    Route::get('Conversation','conversationController@getUserConversationById');
-    Route::get('Conversation','conversationController@getUserConversationById');
-    Route::get('Conversation','conversationController@getUserConversationById');
+    //Route::post('sendMessage','conversationController@sendMessage');
+    Route::get('conversations','conversationController@allConversations');
+    Route::get('conversations/{id}','conversationController@getAllConversations');
 
 
 
@@ -122,9 +123,6 @@ Route::group(['middleware'=>['web','user']],function(){
     Route::get('/notifications','notificationController@getNotification');
     Route::get('/cancelNotification','notificationController@cancelNotification');
 
-    ////////............User messages ................................//////////
-
-    Route::get('messages','messageController@index');
 
 
 });

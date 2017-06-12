@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
+use App\ActivationService;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -11,6 +13,12 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
+    private $firebaseUrl    = 'https://donteatalone-de6b6.firebaseio.com'; //firebase database url
+    private $firebaseToken  = 'CrYP02MRAG4uphafrzGNUfJXtadiNkLoASLAhb4r';//database token
+    private $currentPath    = 'users/data'; //location to save data
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -21,6 +29,7 @@ class AuthController extends Controller
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
+    protected $activationService;
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
@@ -31,10 +40,46 @@ class AuthController extends Controller
      */
     protected $redirectTo = 'home';
 
-
-    public function __construct()
+    public function __construct(ActivationService $activationService)
     {
-      $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->activationService = $activationService;
+    }
+
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $user = $this->create($request->all());
+
+        $this->activationService->sendActivationMail($user);
+
+        return redirect('/login')->with('status', 'We sent you an activation code. Check your email.');
+    }
+
+    public function authenticated(Request $request, $user)
+    {
+        if (!$user->activated) {
+            $this->activationService->sendActivationMail($user);
+            auth()->logout();
+            return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+        }
+        return redirect()->intended($this->redirectPath());
+    }
+
+    public function activateUser($token)
+    {
+        if ($user = $this->activationService->activateUser($token)) {
+            auth()->login($user);
+            return redirect($this->redirectPath());
+        }
+        abort(404);
     }
 
     /**
@@ -64,7 +109,7 @@ class AuthController extends Controller
         $diff = date_diff(date_create($dateOfBirth), date_create($today));
         $age=$diff->format('%y');
 
-     return  User::create([
+      $use=  User::create([
 
             'UserName' => $data['UserName'],
             'email' => $data['email'],
@@ -78,13 +123,17 @@ class AuthController extends Controller
              'UserAge'=>$age
 
              ]);
+
         //first create firebase object:
+
+
+
         $firebaseObject = new \Firebase\FirebaseLib($this->firebaseUrl,$this->firebaseToken);
 
 
 
         $users   = new \stdClass();
-        $users->id=  Auth::user()->id;
+        $users->id= $use->id;
         $users->lat = $data['lat'];
         $users ->long= $data['long'];
         $users ->username=$data['UserName'];
@@ -97,8 +146,9 @@ class AuthController extends Controller
 
 
         //$this->currentPath.'/'.$userId ==	https://syam.firebaseio.com/users/data
-        $firebaseObject->set($this->currentPath.'/'.$users->id ,$users);
+        $firebaseObject->set($this->currentPath.$users->id ,$users);
 
+            return $use;
 
 
     }

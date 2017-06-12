@@ -186,36 +186,7 @@ class userController extends Controller
     }
 
 
-////////............................fire base.....................///////
 
-    private $firebaseUrl    = 'https://donteatalone-de6b6.firebaseio.com'; //firebase database url
-    private $firebaseToken  = 'CrYP02MRAG4uphafrzGNUfJXtadiNkLoASLAhb4r';//database token
-    private $currentPath    = 'users/data'; //location to save data
-
-    /**
-     *
-     */
-    public function addUserToFireBase()
-    {
-
-        //first create firebase object:
-        $firebaseObject = new \Firebase\FirebaseLib($this->firebaseUrl,$this->firebaseToken);
-
-
-
-        $users   = new \stdClass();
-        $users->lat = 124558;
-        $users ->long= 878544;
-        $users ->username= 'sara';
-        $users ->email= 'sara@jjj.com';
-
-
-
-        //$this->currentPath.'/'.$userId ==	https://syam.firebaseio.com/users/data
-        $firebaseObject->set($this->currentPath.'/5',$users);
-
-     dd($users);
-    }
 
 
     public function partnerNearBy(){

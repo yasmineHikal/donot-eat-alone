@@ -13,6 +13,12 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
+    private $firebaseUrl    = 'https://donteatalone-de6b6.firebaseio.com'; //firebase database url
+    private $firebaseToken  = 'CrYP02MRAG4uphafrzGNUfJXtadiNkLoASLAhb4r';//database token
+    private $currentPath    = 'users/data'; //location to save data
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -103,7 +109,7 @@ class AuthController extends Controller
         $diff = date_diff(date_create($dateOfBirth), date_create($today));
         $age=$diff->format('%y');
 
-     return  User::create([
+      $use=  User::create([
 
             'UserName' => $data['UserName'],
             'email' => $data['email'],
@@ -117,13 +123,17 @@ class AuthController extends Controller
              'UserAge'=>$age
 
              ]);
+
         //first create firebase object:
+
+
+
         $firebaseObject = new \Firebase\FirebaseLib($this->firebaseUrl,$this->firebaseToken);
 
 
 
         $users   = new \stdClass();
-        $users->id= $user->id;
+        $users->id= $use->id;
         $users->lat = $data['lat'];
         $users ->long= $data['long'];
         $users ->username=$data['UserName'];
@@ -136,8 +146,9 @@ class AuthController extends Controller
 
 
         //$this->currentPath.'/'.$userId ==	https://syam.firebaseio.com/users/data
-        $firebaseObject->set($this->currentPath.'/'.$users->id ,$users);
+        $firebaseObject->set($this->currentPath.$users->id ,$users);
 
+            return $use;
 
 
     }

@@ -137,7 +137,7 @@ class adminController extends Controller
 
         $this->validate($request,[
             'RestaurantName'   => 'required|alpha|min:2|max:50',
-            'RestaurantPhone'  => 'required|min:5|alphanumreric',
+            'RestaurantPhone'  => 'required|min:5|numeric',
             'email' => 'required|email|max:255|unique:users',
             'password'  => 'required|min:8|max:50'
 
@@ -226,6 +226,10 @@ class adminController extends Controller
     }
     public function editProfile(Request $request, $id)
     {
+        $this->validate($request,[
+            'UserName' => 'required|alpha|min:3|max:50'
+
+            ]);
         $user = User::find($id);
         $user->UserName           = $request['UserName'];
         $user->UserPhone          = $request['UserPhone'];
@@ -263,7 +267,11 @@ class adminController extends Controller
     }
     public function editPassword(Request $request, $id)
     {
+        $this->validate($request,[
+            'password' => 'required|min:8|max:50',
+            'password_confirmation' =>'required|confirmed'
 
+            ]);
 
         $user = User::find($id);
         $user->password =bcrypt($request->password);

@@ -115,6 +115,10 @@ class userController extends Controller
 
     public function editProfile(Request $request, $id)
     {
+        $this->validate($request,[
+            'UserName' => 'required|alpha|min:3|max:50'
+
+            ]);
         $user = name::find($id);
         $user->UserName = $request['UserName'];
         $user->UserPhone = $request['UserPhone'];
@@ -171,7 +175,11 @@ class userController extends Controller
     public function editPassword(Request $request, $id)
     {
 
+        $this->validate($request,[
+            'password' => 'required',
+            'password_confirmation' =>'confirmed'
 
+            ]);
         $user = name::find($id);
         $user->password = bcrypt($request->password);
         $user->save();

@@ -77,7 +77,7 @@ Route::group(['middleware'=>['admin']],function(){
         //--------------------------------------------------------------------//
 
 
-Route::group(['middleware'=>['web','user']],function(){
+Route::group(['middleware'=>['user']],function(){
 
     
     Route::get('/home','userController@index');

@@ -7,35 +7,78 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\message;
 use Auth;
+use App\Conversation;
+use Illuminate\Support\Facades\DB;
 
 class messageController extends Controller
 {
-    //
 
-    public function index(){
 
-        return view('users.messages');
+    public function sendMessage(Request $request,Message $msg )
+    {
+
+          $con= Conversation::create();
+
+          $msg->Conversationid = $con->id;
+          $msg->MessageContent = $request->input('MessageContent');
+          $msg->MessageReceiverId = $request['InvitationReceiverId'];
+          $msg->MessageSenderId = Auth::user()->id;
+          $msg->IsRead =  0   ;
+          $msg->save();
+
+
+
+        return back()->withFlashMessage('Message sent successfully');
+
+
     }
 
-    public function getUserNotifications(Request $request){
-
-        $notifications=message::where('IsRead',0)
-          ->where('MessageReceiverId',$request->user()->id)
-          ->orderBy('created_at','desc')
-            ->get();
-       // dd($notifications);
-
-        return response(['data'=>$notifications],200);
+    public function ReadMesage(Request $request){
 
 
+        $id= $request['InvitationReceiverId'];
+        $mes = Message::where('messageId',$id)->first();
+
+        $mes->IsRead = 1;
+//        return $reservation;
+        $mes->save();
     }
 
+
+
+
+    /*
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+
+    public function index($Id){
+
+
+
+
+      $messages=DB::table('messages')
+          ->join('conversations' ,'messages.Conversationid','=','conversations.id')
+          ->where('MessageReceiverId','=',Auth::user()->id)
+          ->join('users','users.id','=','messages.MessageSenderId')
+          ->where('IsRead','=',0)
+          ->orderBy('messages.created_at','desc')
+          ->where('MessageSenderId',$Id)
+          ->select('messages.MessageSenderId','users.Username','users.UserPhoto','messages.MessageContent','messages.MessageId')
+          ->get();
+      //  dd($messages);
+
+
+
+       return view('users.viewMessage');
+    }
+
+  /**
     public function getMessages(Request $request){
         $messages=message::where('MessageReceiverId',$request->user()->id)
             ->orderBy('created_at','desc')
             ->get();
 
-        //dd($messages);
+        dd($messages);
         return $messages ;
 
 
@@ -82,6 +125,7 @@ class messageController extends Controller
             'IsRead'=> 0,
 
         ];
+
         $msg = message::create($attributes);
 
         $data= message::where('id',$msg->MessageId)->first();
@@ -89,7 +133,7 @@ class messageController extends Controller
         return $data;
 
 
-    }
+    }  **/
 
 
 }

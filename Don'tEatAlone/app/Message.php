@@ -13,34 +13,11 @@ class Message extends Model
 
     protected $fillable= [
 
-        'MessageSenderId', 'MessageReceiverId', 'MessageContent', 'IsRead'
+        'MessageSenderId', 'MessageReceiverId', 'MessageContent', 'IsRead' ,'conversationid'
 
     ];
 
-    protected $appends= ['sender','receiver'];
-
-
-    public function getCreatedAtAttribute($value){
 
 
 
-        return Carbon::parse($value)->diffForHumans();
-
-
-    }
-
-    public function getSenderAttribute(){
-
-        return User::where('id',$this->MessageSenderId)->first();
-
-
-    }
-
-
-    public function getReceiverAttribute(){
-
-
-        return User::where('id',$this->MessageReceiverId)->first();
-
-    }
 }

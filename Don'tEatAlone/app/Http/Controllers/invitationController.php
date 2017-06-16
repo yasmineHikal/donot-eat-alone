@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Conversation;
+use App\Message;
 use App\Reservation;
 use Illuminate\Http\Request;
 use Auth;
@@ -18,7 +20,7 @@ class invitationController extends Controller
 {
     //
 
-    public function storeInvitation(Request $request  ){
+    public function storeInvitation(Request $request,Message $mes  ){
 
         $attributes=[
 
@@ -35,8 +37,24 @@ class invitationController extends Controller
         ];
         invitation::create($attributes);
 
+       $con= Conversation::create();
+
+
+
+
+             $mes->Conversationid = $con->id;
+             $mes->MessageContent = $request['message'];
+             $mes->MessageReceiverId = $request['InvitationReceiverId'];
+             $mes->MessageSenderId = Auth::user()->id;
+             $mes->IsRead =  0   ;
+             $mes->save();
+
+
+
+
+
+
         return back()->withFlashMessage('Invitation sent');
-;
 
     }
 

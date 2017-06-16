@@ -77,7 +77,7 @@ Route::group(['middleware'=>['admin']],function(){
         //--------------------------------------------------------------------//
 
 
-Route::group(['middleware'=>['web','user']],function(){
+Route::group(['middleware'=>['user']],function(){
 
     
     Route::get('/home','userController@index');
@@ -98,18 +98,18 @@ Route::group(['middleware'=>['web','user']],function(){
 
     ///////..............USER MESSAGES...................... ////////////
 
-    Route::get('messagesNotifications','messageController@getUserNotifications');
-    Route::get('messages','messageController@getMessages');
+   /* Route::get('messages','messageController@getMessages');
     Route::post('message','messageController@getMessageById');
     Route::post('messageSent','messageController@getMessageSent');
-    Route::post('sendMessage','messageController@sendMessage');
+    Route::post('sendMessage','messageController@sendMessage');  */
 
 
     ///////..............USER CONVERSATION...................... ////////////
 
-    Route::get('Conversation','conversationController@getUserConversationById');
-    Route::get('Conversation','conversationController@getUserConversationById');
-    Route::get('Conversation','conversationController@getUserConversationById');
+    Route::get('messages','conversationController@index');
+ //   Route::get('viewMessage','messageController@index');
+    Route::post('sendMessage','messageController@sendMessage');
+
 
 
 
@@ -125,9 +125,11 @@ Route::group(['middleware'=>['web','user']],function(){
     Route::get('/notifications','notificationController@getNotification');
     Route::get('/cancelNotification','notificationController@cancelNotification');
 
-    ////////............User messages ................................//////////
+    ////////............User navBarInfo ................................//////////
 
-    Route::get('messages','messageController@index');
+     Route::get('navBarNotification','userController@navBarNotification');
+     Route::get('navBarMessage','userController@navBarMessage');
+
 
 
 });
@@ -138,7 +140,7 @@ Route::group(['middleware'=>['web','user']],function(){
             //-----------------------RESTAURANT ROUTES------------------------------//
             //---------------------------------------------------------------------//
 
-Route::group(['middleware'=>['web','restaurant']],function(){
+Route::group(['middleware'=>['restaurant']],function(){
 
     Route::get('/restaurant','restaurantController@index');
     Route::get('/reservations','reservationController@getReservations');
@@ -173,5 +175,5 @@ Route::group(['middleware'=>['web','restaurant']],function(){
 
 
 
-    Route::get('/firebase','userController@addUserToFireBase');
+    Route::get('/firebase','userController@firebase');
 

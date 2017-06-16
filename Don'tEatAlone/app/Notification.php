@@ -13,11 +13,12 @@ class Notification extends Model
 
     protected $fillable= [
 
-        'type',  'ReservationData', 'ReservationStartTime','ReservationEndTime', 'NotificationToId1','NotificationToId2', 'NotificationFormId'
+        'type',  'ReservationData', 'ReservationStartTime','ReservationEndTime',
+        'NotificationToId1','NotificationToId2', 'NotificationFormId'
 
     ];
 
-    protected $appends= ['to','from'];
+   /** protected $appends= ['to','from'];
 
 
     public function getCreatedAtAttribute($value){
@@ -42,5 +43,5 @@ class Notification extends Model
         return User::where('id',$this->NotificationFormId)->first();
 
     }
-
+        **/
 }

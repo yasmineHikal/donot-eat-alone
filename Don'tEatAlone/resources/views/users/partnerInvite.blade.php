@@ -105,7 +105,7 @@ find partner
                                             </div>
                                         </div>
 
-                                        <!--         <div class="form-group">
+                                                <div class="form-group">
                                             <label class="control-label col-md-4">Write message</label>
                                             <div class="col-md-8">
                                             <div class="input-group">
@@ -113,7 +113,7 @@ find partner
 
                                               </div>
                                               </div>
-                                            </div> -->
+                                            </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-4">Select Restaurant</label>
                                             <div class="col-md-8">

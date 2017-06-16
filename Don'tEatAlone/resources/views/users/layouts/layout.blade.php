@@ -74,116 +74,35 @@
                                                     <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
                                                                   <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                                                   <i class="icon-bell"></i>
-                                                                  <span class="badge badge-default"> 7 </span>
+                                                                  <span id="numNotification"class="badge badge-default numNotification"> </span>
                                                                   </a>
                                                                   <ul class="dropdown-menu">
                                                                       <li class="external">
-                                                                          <h3>You have
-                                                                              <span class="bold">7 New</span> notification
+                                                                          <h3>to show all
+                                                                              <span class="bold numNotification">Notification</span> click
                                                                           </h3>
                                                                           <a href="{{url('/notifications')}}">view all</a>
                                                                       </li>
-                                                                      <li>
-                                                                          <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 275px;">
-                                                                              <ul class="dropdown-menu-list scroller" style="height: 275px; overflow: hidden; width: auto;" data-handle-color="#637283" data-initialized="1">
-                                                                                  <li>
-                                                                                      <a href="#">
-                                                                                      <span class="photo">
-                                                                                      <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>
-                                                                                      <span class="subject">
-                                                                                      <span class="from"> Lisa Wong </span>
-                                                                                      <span class="time">Just Now </span>
-                                                                                      </span>
-                                                                                      <span class="message"> Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                                                                      </a>
-                                                                                  </li>
 
-                                                                              </ul>
-                                                                              <div class="slimScrollBar" style="background: rgb(99, 114, 131); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div>
-                                                                              <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div>
-                                                                          </div>
-                                                                      </li>
                                                                   </ul>
                                                               </li>
 
                                 <!-- BEGIN INBOX DROPDOWN -->
                                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                                <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
-                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <i class="icon-envelope-open"></i>
-                                    <span class="badge badge-default"> 4 </span>
+                                <li class="dropdown dropdown-extended dropdown-inbox " id="header_inbox_bar">
+                                    <a href="javascript:;" title="messages" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <i  class="icon-envelope-open"aria-hidden="true"></i>
+                                    <span id="numMessage" class="badge badge-default numMessages"></span>
                                     </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="external">
-                                            <h3>You have
-                                                <span class="bold">7 New</span> Messages
-                                            </h3>
-                                            <a href="app_inbox.html">view all</a>
-                                        </li>
-                                        <li>
-                                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 275px;">
-                                                <ul class="dropdown-menu-list scroller" style="height: 275px; overflow: hidden; width: auto;" data-handle-color="#637283" data-initialized="1">
-                                                    <li>
-                                                        <a href="#">
-                                                        <span class="photo">
-                                                        <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>
-                                                        <span class="subject">
-                                                        <span class="from"> Lisa Wong </span>
-                                                        <span class="time">Just Now </span>
-                                                        </span>
-                                                        <span class="message"> Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                        <span class="photo">
-                                                        <img src="../assets/layouts/layout3/img/avatar3.jpg" class="img-circle" alt=""> </span>
-                                                        <span class="subject">
-                                                        <span class="from"> Richard Doe </span>
-                                                        <span class="time">16 mins </span>
-                                                        </span>
-                                                        <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                        <span class="photo">
-                                                        <img src="../assets/layouts/layout3/img/avatar1.jpg" class="img-circle" alt=""> </span>
-                                                        <span class="subject">
-                                                        <span class="from"> Bob Nilson </span>
-                                                        <span class="time">2 hrs </span>
-                                                        </span>
-                                                        <span class="message"> Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                        <span class="photo">
-                                                        <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>
-                                                        <span class="subject">
-                                                        <span class="from"> Lisa Wong </span>
-                                                        <span class="time">40 mins </span>
-                                                        </span>
-                                                        <span class="message"> Vivamus sed auctor 40% nibh congue nibh... </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                        <span class="photo">
-                                                        <img src="../assets/layouts/layout3/img/avatar3.jpg" class="img-circle" alt=""> </span>
-                                                        <span class="subject">
-                                                        <span class="from"> Richard Doe </span>
-                                                        <span class="time">46 mins </span>
-                                                        </span>
-                                                        <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <div class="slimScrollBar" style="background: rgb(99, 114, 131); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div>
-                                                <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
+          <ul class="dropdown-menu">
+                                                                                <li class="external">
+                                                                                    <h3>to show all
+                                                                                        <span class="bold numNotification">Messages</span> click
+                                                                                    </h3>
+                                                                                    <a href="{{url('/messages')}}">view all</a>
+                                                                                </li>
+
+                                                                            </ul>
                                 </li>
                                 <!-- END INBOX DROPDOWN -->
                                 <!-- BEGIN USER LOGIN DROPDOWN -->
@@ -208,11 +127,7 @@
                                 </li>
                                 <!-- END USER LOGIN DROPDOWN -->
                                 <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                                <li class="dropdown dropdown-quick-sidebar-toggler">
-                                    <a href="javascript:;" class="dropdown-toggle">
-                                    <i class="icon-logout"></i>
-                                    </a>
-                                </li>
+
                             </ul>
                         </div>
                         <!-- END TOP NAVIGATION MENU -->
@@ -297,8 +212,10 @@
                     <!-- END CONTENT -->
                     <!-- BEGIN QUICK SIDEBAR -->
                     <a href="javascript:;" class="page-quick-sidebar-toggler">
-                    <i class="icon-login"></i>
+                    <i class="icon-envelope-open"></i>
                     </a>
+
+
                     <div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
                         <div class="page-quick-sidebar">
                             <ul class="nav nav-tabs">
@@ -307,23 +224,29 @@
                                     </a>
                                 </li>
                             </ul>
+
                             <div class="tab-content">
                                 <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
                                     <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
-                                        <ul class="media-list list-items">
+                                        <ul class="media-list list-items" >
+
+
                                             <!-- BEGIN CONVERSATIONS -->
-                                            <li class="media">
-                                                <div class="media-status">
-                                                    <span class="badge badge-success">8</span>
-                                                </div>
+
+                                            <li class="media" data-bind="foreach: Convers">
+
                                                 <img class="media-object" src="../assets/layouts/layout/img/avatar3.jpg" alt="...">
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">Bob Nilson</h4>
-                                                    <div class="media-heading-sub"> Project Manager </div>
+                                                    <h4 class="media-heading" data-bind="text: Username"></h4>
+                                                    <div class="media-heading-sub" data-bind="text: MessageContent">  </div>
                                                 </div>
-                                            </li>
+
+                                              </li>
+
                                             <!-- END CONVERSATION -->
                                         </ul>
+
+
                                     </div>
                                     <div class="page-quick-sidebar-item">
                                         <div class="page-quick-sidebar-chat-user">
@@ -331,8 +254,10 @@
                                                 <a href="javascript:;" class="page-quick-sidebar-back-to-list">
                                                 <i class="icon-arrow-left"></i>Back</a>
                                             </div>
+
                                             <div class="page-quick-sidebar-chat-user-messages">
                                                 <!-- BEGIN MESSAGES -->
+
                                                 <div class="post out">
                                                     <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg" />
                                                     <div class="message">
@@ -353,7 +278,7 @@
                                                 </div>
                                                 <!--END MESSAGES  -->
                                             </div>
-                                            <div class="page-quick-sidebar-chat-user-form">
+                                            <form class="page-quick-sidebar-chat-user-form">
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" placeholder="Type a message here...">
                                                     <div class="input-group-btn">
@@ -362,7 +287,7 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -438,6 +363,70 @@
                 {!! Html::script('assets/layouts/layout/scripts/demo.min.js') !!}
                 {!! Html::script('assets/layouts/global/scripts/quick-sidebar.min.js') !!}
                  {!! Html::script('cus/sweetalert.min.js') !!}
+
+                 <script>
+
+                 function navBarNotification() {
+
+                    var xhttp = new XMLHttpRequest();
+                       xhttp.onreadystatechange = function() {
+                         if (this.readyState == 4 && this.status == 200) {
+                         document.getElementById("numNotification").innerHTML = this.responseText;
+                         }
+                       };
+                       xhttp.open("GET", "navBarNotification", true);
+                       xhttp.send();
+
+
+                 }
+
+
+                  function navBarMessage() {
+
+                    var xhttp = new XMLHttpRequest();
+                       xhttp.onreadystatechange = function() {
+                         if (this.readyState == 4 && this.status == 200) {
+                         document.getElementById("numMessage").innerHTML = this.responseText;
+                         }
+                       };
+                       xhttp.open("GET", "navBarMessage", true);
+                       xhttp.send();
+
+
+                 }
+           /**    function getConversation() {
+
+                    var xhttp = new XMLHttpRequest();
+                       xhttp.onreadystatechange = function() {
+                         if (this.readyState == 4 && this.status == 200) {
+                        // document.getElementById("numMessage").innerHTML = this.responseText;
+                        // alert(this.response)
+                         var json = this.response;
+                                 alert(json)  ;
+                             $.each(data, function(index) {
+                                         alert(data[index].TEST1);
+                                         alert(data[index].TEST2);
+                                     });
+                       };
+                       }
+                       xhttp.open("GET", "Conversation", true);
+                       xhttp.send();
+
+
+                   }**/
+
+
+
+
+
+                     window.onload=navBarMessage();
+                   window.onload=navBarNotification();
+                 //  window.onload=getConversation();
+
+
+                 </script>
+
+
               @if(Session::has('flash_message'))
 
 

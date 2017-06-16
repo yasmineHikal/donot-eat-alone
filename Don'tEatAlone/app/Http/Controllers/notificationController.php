@@ -15,13 +15,11 @@ class notificationController extends Controller
     public function getNotification(Request $request){
 
         $notifications=DB::table('notifications')
-            ->join('users', function ($join) {
-                $join->on('users.id', '=', 'notifications.NotificationToId2') ;
-                //    ->oron('users.id', '=', 'notifications.NotificationToId2')  ;
-            })
+
+            ->join('users','users.id', '=', 'notifications.NotificationToId2')
             ->join('restaurants','restaurants.id','=','NotificationFormId')
 
-          //  ->join('users','NotificationToId1','=','users.id')
+          // ->join('users','NotificationToId1','=','users.id')
           //  ->join('users','NotificationToId2','=','users.id')
             ->select('notifications.*','restaurants.RestaurantName','restaurants.RestaurantPhoto','users.UserName')
             ->where('NotificationToId1',Auth::user()->id)
@@ -29,7 +27,7 @@ class notificationController extends Controller
 
             ->get();
 
-          // dd($notifications);
+           //dd($notifications);
         return view('users.notification',compact('notifications'))   ;
 
 

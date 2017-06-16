@@ -20,9 +20,32 @@ class userController extends Controller
      */
     public function index()
     {
-        //
-        return view('users.home');
+
+
+         return view('users.home');
     }
+
+
+    public function navBarNotification()
+    {
+        $myId= Auth::user()->id;
+        $numNotification=DB::table('notifications')->where('NotificationToId1','=',$myId)->select('*')->count();
+
+        // dd($notifications);
+
+        return $numNotification;
+    }
+
+     public function navBarMessage()
+    {
+        $myId= Auth::user()->id;
+        $numMessages=DB::table('messages')->where('MessageReceiverId',$myId)->select('*')->count();
+
+        // dd($notifications);
+
+        return $numMessages;
+    }
+
 
 
 
@@ -185,6 +208,11 @@ class userController extends Controller
         return view('users.invites');
     }
 
+    public function firebase()
+    {
+
+
+    }
 
 
 

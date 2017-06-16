@@ -98,18 +98,33 @@ Route::group(['middleware'=>['user']],function(){
 
     ///////..............USER MESSAGES...................... ////////////
 
+<<<<<<< HEAD
    /* Route::get('messages','messageController@getMessages');
     Route::post('message','messageController@getMessageById');
     Route::post('messageSent','messageController@getMessageSent');
     Route::post('sendMessage','messageController@sendMessage');  */
+=======
+    Route::get('messagesNotifications','messageController@getUserNotifications');
+    //Route::get('messages','messageController@getMessages');
+    Route::get('/messages/{id}','messageController@getMessages');
+    //Route::post('messages','messageController@getMessageById');
+    //Route::post('messageSent','messageController@getMessageSent');
+    Route::post('sendMessage/{id}','messageController@sendMessage');
+>>>>>>> 7da3f48512898d6503050ad1574c8325e7a8f7f1
 
 
     ///////..............USER CONVERSATION...................... ////////////
 
+<<<<<<< HEAD
     Route::get('messages','conversationController@index');
  //   Route::get('viewMessage','messageController@index');
     Route::post('sendMessage','messageController@sendMessage');
 
+=======
+    //Route::post('sendMessage','conversationController@sendMessage');
+    Route::get('conversations','conversationController@allConversations');
+    Route::get('conversations/{id}','conversationController@getAllConversations');
+>>>>>>> 7da3f48512898d6503050ad1574c8325e7a8f7f1
 
 
 
@@ -125,11 +140,14 @@ Route::group(['middleware'=>['user']],function(){
     Route::get('/notifications','notificationController@getNotification');
     Route::get('/cancelNotification','notificationController@cancelNotification');
 
+<<<<<<< HEAD
     ////////............User navBarInfo ................................//////////
 
      Route::get('navBarNotification','userController@navBarNotification');
      Route::get('navBarMessage','userController@navBarMessage');
 
+=======
+>>>>>>> 7da3f48512898d6503050ad1574c8325e7a8f7f1
 
 
 });

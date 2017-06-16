@@ -38,8 +38,7 @@ class restaurantController extends Controller
     {
         $this->validate($request,[
             'RestaurantName'   => 'required|alpha|min:2|max:50',
-            'RestaurantPhone'  => 'required|min:5|integer',
-            'RestaurantAddress' => 'required',
+
 
 
 
@@ -115,7 +114,11 @@ class restaurantController extends Controller
      */
     public function editPassword(Request $request, $id)
     {
+        $this->validate($request,[
+            'password' => 'required|min:8|max:50',
+            'password_confirmation' =>'required|confirmed'
 
+            ]);
 
         $restaurant = User::find($id);
         $restaurant->password =bcrypt($request->password);

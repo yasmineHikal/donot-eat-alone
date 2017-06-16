@@ -10,8 +10,10 @@
             <div class="portlet light profile-sidebar-portlet ">
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic" style="width: 30%" >
-                    <img src="../uploads/{{$user->UserPhoto}}" class="img-responsive" alt=""> 
+                    <img src="../uploads/{{$user->UserPhoto}}" height="300px" alt=""> 
+                    <div class="label label-lg label-info" style="float:right;"><a href="/messages/{{$user->id}}" style="color:#fff;text-decoration: none;">Message</a></div>
                 </div>
+
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <br>

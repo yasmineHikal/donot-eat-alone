@@ -108,7 +108,7 @@ window.onload = function() {
 			'icon-like' : '&#xe063;',
 			'icon-list' : '&#xe064;',
 			'icon-login' : '&#xe065;',
-			'icon-logout' : '&#xe066;',
+			'icon-envelope-open' : '&#xe066;',
 			'icon-loop' : '&#xe067;',
 			'icon-microphone' : '&#xe068;',
 			'icon-music-tone' : '&#xe069;',

@@ -12,7 +12,7 @@ class Conversation extends Model
 
     protected $fillable= [
 
-        'id','MessageId '//,'SenderId','ReceiverId'
+        'id','MessageId '/*,'SenderId','ReceiverId' */,'user1','user2'
 
     ];
     public function messages(){

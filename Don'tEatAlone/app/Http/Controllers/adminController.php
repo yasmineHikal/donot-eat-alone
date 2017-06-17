@@ -92,13 +92,11 @@ class adminController extends Controller
     {
         $this->validate($request,[
           'UserName' => 'required|alpha|min:3|max:50',
-            'email' => 'required|email|max:255|unique:users',
-            'password'  => 'required|min:8|max:50'
+            'email' => 'required|email|max:255',
             ]);
         $user = User::find($id);
         $user->UserName      = $request['UserName'];
         $user->email         = $request['email'];
-        $user->password  = bcrypt($request['password']);
 
 
         $user->save();

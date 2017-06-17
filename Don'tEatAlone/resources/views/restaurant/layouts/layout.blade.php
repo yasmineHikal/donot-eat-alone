@@ -179,7 +179,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
-                                        <a href="{{url('/restaurantProfile/{id}'. Auth::user()->id )}}">
+                                        <a href="{{url('/restaurantProfile/'. Auth::user()->id )}}">
                                         <i class="icon-user"></i> My Profile </a>
                                     </li>
                                     <li class="divider"> </li>
